@@ -2,8 +2,12 @@ import type Post from "@/models/post";
 import type { WithId } from "mongodb";
 import axios from "axios";
 
-const Detail = async () => {
-  const id: string;
+interface Props {
+  params: { id: string; searchParams: string };
+}
+
+const Detail = async (props: Props) => {
+  const { id } = await props.params;
 
   const readPostDetail = async (): Promise<WithId<Post>> => {
     try {
