@@ -19,11 +19,11 @@ const List = async () => {
   return (
     <ul>
       {posts.map((item, index) => (
-        <Link href={`/detail/${item._id}`}>
-          <li key={index}>
+        <li key={index}>
+          <Link href={`/detail/${item._id}`}>
             <h4>{item.title}</h4>
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </ul>
   );
