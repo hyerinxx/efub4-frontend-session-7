@@ -1,5 +1,5 @@
 import type Post from "@/models/post";
-import { WithId } from "mongodb";
+import type { WithId } from "mongodb";
 import axios from "axios";
 import Link from "next/link";
 
