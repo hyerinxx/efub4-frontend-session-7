@@ -9,8 +9,8 @@ const List = async () => {
       const response = await axios.get("http://localhost:3000/api/post/readList");
       return response.data;
     } catch (error) {
-      console.error(error);
-      return [];
+      if (error instanceof Error) throw new Error(error.message);
+      else throw new Error("알 수 없는 오류가 발생했습니다.");
     }
   };
 
