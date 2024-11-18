@@ -1,8 +1,9 @@
 import type Post from "@/models/post";
+import { WithId } from "mongodb";
 import axios from "axios";
 
 const List = async () => {
-  const readPostList = async (): Promise<Post[]> => {
+  const readPostList = async (): Promise<WithId<Post>[]> => {
     try {
       const response = await axios.get("http://localhost:3000/api/post/readList");
       return response.data;
@@ -12,7 +13,7 @@ const List = async () => {
     }
   };
 
-  const posts = await readPostList();
+  const posts: WithId<Post>[] = await readPostList();
 
   return (
     <ul>
