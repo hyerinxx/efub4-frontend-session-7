@@ -1,6 +1,7 @@
 import type Post from "@/models/post";
 import { WithId } from "mongodb";
 import axios from "axios";
+import Link from "next/link";
 
 const List = async () => {
   const readPostList = async (): Promise<WithId<Post>[]> => {
@@ -18,9 +19,11 @@ const List = async () => {
   return (
     <ul>
       {posts.map((item, index) => (
-        <li key={index}>
-          <h4>{item.title}</h4>
-        </li>
+        <Link href={`/detail/${item._id}`}>
+          <li key={index}>
+            <h4>{item.title}</h4>
+          </li>
+        </Link>
       ))}
     </ul>
   );
