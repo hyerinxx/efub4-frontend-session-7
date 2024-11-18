@@ -1,24 +1,18 @@
-"use client";
-
 import type Post from "@/models/post";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
-const List = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  const readPostList = async () => {
+const List = async () => {
+  const readPostList = async (): Promise<Post[]> => {
     try {
-      const response = await axios.get("/api/post/readList");
-      setPosts(response.data);
+      const response = await axios.get("http://localhost:3000/api/post/readList");
+      return response.data;
     } catch (error) {
       console.error(error);
+      return [];
     }
   };
 
-  useEffect(() => {
-    readPostList();
-  }, []);
+  const posts = await readPostList();
 
   return (
     <ul>
